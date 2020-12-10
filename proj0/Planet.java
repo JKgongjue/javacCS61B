@@ -79,7 +79,7 @@ class Planet {
         this.yyPos+=dt*this.yyVel;
     }
     public void draw(){
-        StdDraw.picture(xxPos,yyPos,"D:\\应用软件\\JavaCS61B\\project0Nbody\\src\\project0\\images\\"+imgFileName);
+        StdDraw.picture(xxPos,yyPos,imgFileName);
     }
 
 
