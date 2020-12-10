@@ -1,6 +1,4 @@
-package project0;
-import project0.StdDraw;
-class Planet {
+public class Planet {
     public static double G = 6.67e-11;
     public double xxPos;
     public double yyPos;

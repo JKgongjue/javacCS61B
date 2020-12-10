@@ -1,9 +1,3 @@
-package project0;
-
-import java.io.File;
-import java.util.Arrays;
-import java.util.Scanner;
-
 public class NBody {
     public static double readRadius(String s){
         In in = new In(s);
@@ -42,22 +36,6 @@ public class NBody {
             planet.draw();
         }
         double time = 0;
-//        for (double i =time;i<=T;i+=dt){
-//
-//            double[] xForces = new double[5];
-//            double[] yForces = new double[5];
-//            for (int j = 0; j < planets.length; j++) {
-//                xForces[j] = planets[j].calcNetForceExertedByX(planets);
-//                yForces[j] = planets[j].calcNetForceExertedByY(planets);
-//            }
-//            for (int j = 0; j < planets.length; j++) {
-//                StdDraw.enableDoubleBuffering();
-//                planets[j].update(dt,xForces[j],yForces[j]);
-//                StdDraw.picture(0,0,"D:\\应用软件\\JavaCS61B\\project0Nbody\\src\\project0\\starfield.jpg");
-//                planets[j].draw();
-//                StdDraw.show();
-//                StdDraw.pause(10);
-//            }
         while (time<=T){
 
             double[] xForces = new double[5];
