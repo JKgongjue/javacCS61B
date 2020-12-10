@@ -30,7 +30,7 @@ public class NBody {
         Planet[] planets = NBody.readPlanets(filename);
         StdDraw.setScale(-radius,radius);
         StdDraw.clear();
-        StdDraw.picture(0,0,"starfield.jpg");
+        StdDraw.picture(0,0,"images/starfield.jpg");
         StdDraw.enableDoubleBuffering();
         for (Planet planet : planets) {
             planet.draw();

@@ -1,5 +1,5 @@
 public class Planet {
-    public static double G = 6.67e-11;
+    private static double G = 6.67e-11;
     public double xxPos;
     public double yyPos;
     public double xxVel;
@@ -14,14 +14,6 @@ public class Planet {
         this.yyVel = yyVel;
         this.mass = mass;
         this.imgFileName = imgFileName;
-    }
-
-    public Planet(double xxPos, double yyPos, double xxVel, double yyVel, double mass) {
-        this.xxPos = xxPos;
-        this.yyPos = yyPos;
-        this.xxVel = xxVel;
-        this.yyVel = yyVel;
-        this.mass = mass;
     }
 
     public Planet(Planet p){
