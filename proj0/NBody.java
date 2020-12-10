@@ -10,7 +10,7 @@ public class NBody {
         int Numofplaents = in.readInt();
         double radius =in.readDouble();
         Planet[] planets = new Planet[5];
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < Numofplaents; i++) {
             double xx =in.readDouble();
             double yy = in.readDouble();
             double xxvel = in.readDouble();
