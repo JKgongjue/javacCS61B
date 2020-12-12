@@ -86,15 +86,21 @@ public class IntList {
             if (B==null) return null;
             else {
                 A = B;
+                return A;
             }
         }
-        IntList list = A;
-        IntList head = A;
-        while (list.rest!=null){
-            list = list.rest;
+        else {
+            if (B == null) return A;
+            else {
+                IntList list = A;
+                IntList head = A;
+                while (list.rest!=null){
+                    list = list.rest;
+                }
+                list.rest = B;
+                return head;
+            }
         }
-        list.rest = B;
-        return head;
     }
 
     /**
@@ -105,9 +111,6 @@ public class IntList {
         //TODO:  fill in method
         if (A==null){
             if (B==null) return null;
-            else{
-                A = B;
-            }
         }
         IntList head = A;
         IntList list = new IntList(head.first, null);
