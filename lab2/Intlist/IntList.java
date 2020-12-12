@@ -111,6 +111,18 @@ public class IntList {
         //TODO:  fill in method
         if (A==null){
             if (B==null) return null;
+            else {
+                IntList head = B;
+                IntList list = new IntList(head.first, null);
+                IntList ptr = list;
+                while(head.rest!=null){
+                    IntList L = new IntList(head.rest.first,null);
+                    head = head.rest;
+                    ptr.rest = L;
+                    ptr = ptr.rest;
+                }
+                return list;
+            }
         }
         IntList head = A;
         IntList list = new IntList(head.first, null);
