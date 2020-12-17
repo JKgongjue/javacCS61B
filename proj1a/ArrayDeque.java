@@ -36,7 +36,7 @@ public class ArrayDeque<T> {
     private void doubleCapacity(){
         int n = items.length-head;
         int r = tail;
-        T[] a = (T[]) new Object[size*2];
+        T[] a = (T[]) new Object[items.length*2];
         System.arraycopy(items,head,a,0,n);
         System.arraycopy(items,0,a,n,r);
         head = 0;
@@ -149,6 +149,12 @@ public class ArrayDeque<T> {
         }
         return item;
     }
+    /**
+     * 由于设置的时候tail为尾点，且数组未满时tail这个点指向的addlast将要加入的点。
+     *所有的逻辑都基于tail指向的点是空。
+     * 但是特殊情况下tail指向的点不一定为空
+     * 所以这里要判断tail指向的点是否为空。
+     * */
     public T removeLast(){
         if (size==0) return null;
         T item;
@@ -156,14 +162,19 @@ public class ArrayDeque<T> {
             tail = items.length -1;
             item = items[tail];
             items[tail] = null;
-            size--;
         }
         else {
-            item = items[tail];
-            items[tail-1] = null;
-            tail--;
-            size--;
+            if (items[tail]==null){
+                tail--;
+                item = items[tail];
+            }
+            else {
+                item = items[tail];
+                items[tail] = null;
+            }
+
         }
+        size--;
         if (isResize()){
             divideCapacity();
         }
@@ -179,7 +190,7 @@ public class ArrayDeque<T> {
 
     public static void main(String[] args) {
         ArrayDeque<Integer> arrayDeque = new ArrayDeque<Integer>();
-        arrayDeque.addLast(0);
-        System.out.println(arrayDeque.isEmpty());
+        arrayDeque.addLast(1);
+        System.out.println(arrayDeque.removeLast());
     }
 }

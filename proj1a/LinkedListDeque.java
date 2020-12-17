@@ -16,7 +16,7 @@ public class LinkedListDeque<T> {
         }
         public T getItem(IntNode p,int index){
             if (index==0){
-                return this.item;
+                return p.item;
             }
             index--;
             return getItem(p.next,index);
@@ -101,7 +101,8 @@ public class LinkedListDeque<T> {
         LinkedListDeque<Integer> list = new LinkedListDeque<>();
         list.addLast(0);
         list.addLast(1);
-        list.removeFirst();
+        list.addFirst(5);
+        System.out.println(list.getRecursive(2));
         System.out.println(list.removeFirst());
     }
 }
