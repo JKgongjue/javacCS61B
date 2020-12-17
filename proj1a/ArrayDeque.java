@@ -165,6 +165,7 @@ public class ArrayDeque<T> {
             if (items[tail]==null){
                 tail--;
                 item = items[tail];
+                items[tail] = null;
             }
             else {
                 item = items[tail];
@@ -188,15 +189,18 @@ public class ArrayDeque<T> {
 
 //    public static void main(String[] args) {
 //        ArrayDeque<Integer> arrayDeque = new ArrayDeque<Integer>();
-//        arrayDeque.addLast(1);
+//        arrayDeque.addFirst(0);
+//        arrayDeque.removeLast();
 //        arrayDeque.addLast(2);
-//        arrayDeque.addLast(3);
-//        arrayDeque.addLast(4);
-//        arrayDeque.addLast(5);
-//        arrayDeque.addLast(6);
-//        arrayDeque.addLast(7);
-//        arrayDeque.addLast(0);
-//        int t = arrayDeque.get(0);
+//         int t = arrayDeque.get(0);
+////        arrayDeque.addLast(2);
+////        arrayDeque.addLast(3);
+////        arrayDeque.addLast(4);
+////        arrayDeque.addLast(5);
+////        arrayDeque.addLast(6);
+////        arrayDeque.addLast(7);
+////        arrayDeque.addLast(0);
+//
 //        System.out.println(t);
 //
 //    }

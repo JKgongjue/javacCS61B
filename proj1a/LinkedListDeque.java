@@ -25,18 +25,18 @@ public class LinkedListDeque<T> {
     public LinkedListDeque(){
         sentinel = new IntNode();
     }
-    public LinkedListDeque(LinkedListDeque other){
-        size = other.size();
-        sentinel = new IntNode();
-        IntNode p = sentinel;
-        IntNode head = other.sentinel;
-        while (head.next!=other.sentinel){
-            p.next = new IntNode(p,head.next.item,null);
-            p = p.next;
-            head = head.next;
-        }
-        p.next = sentinel;
-    }
+//    public LinkedListDeque(LinkedListDeque other){
+//        size = other.size();
+//        sentinel = new IntNode();
+//        IntNode p = sentinel;
+//        IntNode head = other.sentinel;
+//        while (head.next!=other.sentinel){
+//            p.next = new IntNode(p,head.next.item,null);
+//            p = p.next;
+//            head = head.next;
+//        }
+//        p.next = sentinel;
+//    }
     public void addFirst(T item){
         IntNode p = new IntNode(sentinel,item,sentinel.next);
         sentinel.next.prev = p;
