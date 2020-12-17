@@ -1,0 +1,191 @@
+public class ArrayDeque<T> {
+    private int size;
+    public float UsageFactor=0;
+    private T[] items;
+    private int head ; //记录头部节点位置
+    private int tail ; //记录尾部节点位置
+
+    public int getHead() {
+        return head;
+    }
+    public int getTail() {
+        return tail;
+    }
+
+    public T[] getItems() {
+        return items;
+    }
+
+    public float getUsageFactor() {
+        return UsageFactor;
+    }
+
+    public ArrayDeque(){
+        size = 0;
+        items = (T[]) new Object[8];
+        head = 4;
+        tail = 5;
+    }
+    public ArrayDeque(ArrayDeque other){
+        size = other.size();
+        head = other.getHead();
+        tail = other.getTail();
+        items = (T[]) other.getItems();
+        UsageFactor = other.getUsageFactor();
+    }
+    public void doubleCapacity(){
+        int n = items.length-head;
+        int r = tail;
+        T[] a = (T[]) new Object[size*2];
+        System.arraycopy(items,head,a,0,n);
+        System.arraycopy(items,0,a,n,r);
+        head = 0;
+        tail = items.length;
+        items = a;
+
+    }
+    public void divideCapacity(){
+        T[] a = (T[]) new Object[items.length/2];
+
+        if (head<=tail){
+            System.arraycopy(items,head,a,0,tail-head);
+            head = 0;
+            tail = tail - head;
+            items = a;
+        }
+        else {
+            int r = items.length - head;
+            System.arraycopy(items,head,a,0,r);
+            System.arraycopy(items,0,a,r,tail);
+            items = a;
+        }
+    }
+    public void addFirst(T item){
+        if (size==0){
+            items[head] = item;
+            size++;
+        }
+        else  {
+            if (head!=tail){
+                if (head!=0){
+                    items[--head] = item;
+                }
+                else {
+                    head = items.length-1;
+                    items[head] = item;
+                }
+            }
+            else {
+                doubleCapacity();
+                head = items.length-1;
+                items[head] = item;
+            }
+            size++;
+        }
+    }
+    public void addLast(T item){
+        if (head!=tail){
+            if (tail!=items.length-1){
+                items[tail] = item;
+                tail++;
+            }
+            else {
+
+                items[items.length-1] = item;
+                tail = 0;
+            }
+        }
+        else {
+            doubleCapacity();
+            items[tail] = item;
+            tail++;
+        }
+        size++;
+
+    }
+    public boolean isEmpty(){
+        return size > 0;
+    }
+    public boolean isResize(){
+        UsageFactor = (float) size/items.length;
+        if (items.length>=16){
+            return UsageFactor < 0.25;
+        }
+        if (items.length==8) return false;
+        return UsageFactor <0.2;
+    }
+    public int size(){
+        return size;
+    }
+    public void printDeque(){
+        if (tail<=head){
+            for (int i = head; i < items.length; i++) {
+                System.out.print(items[i]+" ");
+            }
+            for (int j = 0; j < tail; j++){
+                System.out.print(items[j]+" ");
+            }
+            System.out.println(" ");
+        }
+        else {
+            for (int i = head; i < tail; i++){
+                System.out.print(items[i]+" ");
+            }
+            System.out.println(" ");
+
+        }
+    }
+    public T removeFirst(){
+        T item = items[head];
+       items[head] = null;
+       head++;
+       if (head>=items.length){
+           head = head-items.length;
+       }
+       size--;
+       if (isResize()){
+           divideCapacity();
+       }
+       return item;
+    }
+    public T removeLast(){
+        T item;
+        if (tail==0){
+            tail = items.length -1;
+            item = items[tail];
+            items[tail] = null;
+            size--;
+        }
+        else {
+            item = items[tail];
+            items[tail-1] = null;
+            tail--;
+            size--;
+        }
+        if (isResize()){
+            divideCapacity();
+        }
+        return item;
+    }
+    public T get(int index){
+        int i = index+head;
+        if (i>items.length){
+            i = i - items.length-1;
+        }
+        return items[i];
+    }
+
+//    public static void main(String[] args) {
+//        ArrayDeque<Integer> arrayDeque = new ArrayDeque<Integer>();
+//        arrayDeque.addFirst(1);
+//        arrayDeque.addFirst(2);
+//        arrayDeque.addLast(3);
+//        for (int i = 0; i < 100; i++) {
+//            arrayDeque.addLast(i);
+//        }
+//        for (int j = 0; j < 100; j++) {
+//            arrayDeque.removeLast();
+//        }
+//        arrayDeque.printDeque();
+//    }
+}
