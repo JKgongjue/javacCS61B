@@ -1,3 +1,13 @@
+/**
+ * 检查一下代码格式，再修改一下能拿2.5分，那就有39.265+2.5 = 41.765分
+ *超过80%，其他的
+ *
+ *
+ *
+ * */
+
+
+
 public class ArrayDeque<T> {
     private int size;
     private float UsageFactor=0;
@@ -134,13 +144,20 @@ public class ArrayDeque<T> {
         }
     }
     public T removeFirst(){
+        T item;
         if (size==0) return null;
-        T item = items[head];
-        items[head] = null;
-        head++;
-        if (head>=items.length){
-            head = head-items.length;
-       }
+        if (items[head]==null){
+            item = items[head+1];
+            items[head+1] = null;
+        }
+        else {
+            item = items[head];
+            items[head] = null;
+            head++;
+            if (head>=items.length){
+                head = head-items.length;
+            }
+        }
         size--;
         if (isResize()){
             divideCapacity();
@@ -187,21 +204,20 @@ public class ArrayDeque<T> {
         return items[i];
     }
 
-//    public static void main(String[] args) {
-//        ArrayDeque<Integer> arrayDeque = new ArrayDeque<Integer>();
-//        arrayDeque.addFirst(0);
-//        arrayDeque.removeLast();
+    public static void main(String[] args) {
+        ArrayDeque<Integer> arrayDeque = new ArrayDeque<Integer>();
+        arrayDeque.addLast(0);
+        int t = arrayDeque.removeFirst();
+        System.out.println(t);
 //        arrayDeque.addLast(2);
-//         int t = arrayDeque.get(0);
-////        arrayDeque.addLast(2);
-////        arrayDeque.addLast(3);
-////        arrayDeque.addLast(4);
-////        arrayDeque.addLast(5);
-////        arrayDeque.addLast(6);
-////        arrayDeque.addLast(7);
-////        arrayDeque.addLast(0);
-//
-//        System.out.println(t);
-//
-//    }
+//        arrayDeque.addLast(3);
+//        arrayDeque.addLast(4);
+//        arrayDeque.addLast(5);
+//        arrayDeque.addLast(6);
+//        arrayDeque.addLast(7);
+//        arrayDeque.addLast(0);
+
+
+
+    }
 }
