@@ -97,12 +97,12 @@ public class LinkedListDeque<T> {
         return p.getItem(p,index);
     }
 
-    public static void main(String[] args) {
-        LinkedListDeque<Integer> list = new LinkedListDeque<>();
-        list.addLast(0);
-        list.addLast(1);
-        list.addFirst(5);
-        System.out.println(list.getRecursive(2));
-        System.out.println(list.removeFirst());
-    }
+//    public static void main(String[] args) {
+//        LinkedListDeque<Integer> list = new LinkedListDeque<>();
+//        list.addLast(0);
+//        list.addLast(1);
+//        list.addFirst(5);
+//        System.out.println(list.getRecursive(2));
+//        System.out.println(list.removeFirst());
+//    }
 }

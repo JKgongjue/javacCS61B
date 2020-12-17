@@ -26,13 +26,6 @@ public class ArrayDeque<T> {
         head = 4;
         tail = 5;
     }
-    private ArrayDeque(ArrayDeque other){
-        size = other.size();
-        head = other.getHead();
-        tail = other.getTail();
-        items = (T[]) other.getItems();
-        UsageFactor = other.getUsageFactor();
-    }
     private void doubleCapacity(){
         int n = items.length-head;
         int r = tail;
@@ -104,9 +97,14 @@ public class ArrayDeque<T> {
             }
         }
         else {
-            doubleCapacity();
-            items[tail] = item;
-            tail++;
+            if (items[head]==null){
+                items[tail] = item;
+            }
+            else {
+                doubleCapacity();
+                items[tail] = item;
+                tail++;
+            }
         }
         size++;
 
@@ -188,9 +186,18 @@ public class ArrayDeque<T> {
         return items[i];
     }
 
-    public static void main(String[] args) {
-        ArrayDeque<Integer> arrayDeque = new ArrayDeque<Integer>();
-        arrayDeque.addLast(1);
-        System.out.println(arrayDeque.removeLast());
-    }
+//    public static void main(String[] args) {
+//        ArrayDeque<Integer> arrayDeque = new ArrayDeque<Integer>();
+//        arrayDeque.addLast(1);
+//        arrayDeque.addLast(2);
+//        arrayDeque.addLast(3);
+//        arrayDeque.addLast(4);
+//        arrayDeque.addLast(5);
+//        arrayDeque.addLast(6);
+//        arrayDeque.addLast(7);
+//        arrayDeque.addLast(0);
+//        int t = arrayDeque.get(0);
+//        System.out.println(t);
+//
+//    }
 }
