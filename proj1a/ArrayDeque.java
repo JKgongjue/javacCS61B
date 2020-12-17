@@ -5,18 +5,18 @@ public class ArrayDeque<T> {
     private int head ; //记录头部节点位置
     private int tail ; //记录尾部节点位置
 
-    public int getHead() {
+    private int getHead() {
         return head;
     }
-    public int getTail() {
+    private int getTail() {
         return tail;
     }
 
-    public T[] getItems() {
+    private T[] getItems() {
         return items;
     }
 
-    public float getUsageFactor() {
+    private float getUsageFactor() {
         return UsageFactor;
     }
 
@@ -26,14 +26,14 @@ public class ArrayDeque<T> {
         head = 4;
         tail = 5;
     }
-    public ArrayDeque(ArrayDeque other){
+    private ArrayDeque(ArrayDeque other){
         size = other.size();
         head = other.getHead();
         tail = other.getTail();
         items = (T[]) other.getItems();
         UsageFactor = other.getUsageFactor();
     }
-    public void doubleCapacity(){
+    private void doubleCapacity(){
         int n = items.length-head;
         int r = tail;
         T[] a = (T[]) new Object[size*2];
@@ -44,7 +44,7 @@ public class ArrayDeque<T> {
         items = a;
 
     }
-    public void divideCapacity(){
+    private void divideCapacity(){
         T[] a = (T[]) new Object[items.length/2];
 
         if (head<=tail){
@@ -59,6 +59,14 @@ public class ArrayDeque<T> {
             System.arraycopy(items,0,a,r,tail);
             items = a;
         }
+    }
+    private boolean isResize(){
+        UsageFactor = (float) size/items.length;
+        if (items.length>=16){
+            return UsageFactor < 0.25;
+        }
+        if (items.length==8) return false;
+        return UsageFactor <0.2;
     }
     public void addFirst(T item){
         if (size==0){
@@ -104,15 +112,7 @@ public class ArrayDeque<T> {
 
     }
     public boolean isEmpty(){
-        return size > 0;
-    }
-    public boolean isResize(){
-        UsageFactor = (float) size/items.length;
-        if (items.length>=16){
-            return UsageFactor < 0.25;
-        }
-        if (items.length==8) return false;
-        return UsageFactor <0.2;
+        return size == 0;
     }
     public int size(){
         return size;
@@ -179,10 +179,7 @@ public class ArrayDeque<T> {
 
     public static void main(String[] args) {
         ArrayDeque<Integer> arrayDeque = new ArrayDeque<Integer>();
-        int size = arrayDeque.size();
-        System.out.println(size);
-        System.out.println(arrayDeque.size());
-        arrayDeque.removeLast();
-        System.out.println(arrayDeque.size());
+        arrayDeque.addLast(0);
+        System.out.println(arrayDeque.isEmpty());
     }
 }
