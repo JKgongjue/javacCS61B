@@ -1,6 +1,6 @@
 public class ArrayDeque<T> {
     private int size;
-    public float UsageFactor=0;
+    private float UsageFactor=0;
     private T[] items;
     private int head ; //记录头部节点位置
     private int tail ; //记录尾部节点位置
@@ -49,8 +49,8 @@ public class ArrayDeque<T> {
 
         if (head<=tail){
             System.arraycopy(items,head,a,0,tail-head);
+            tail = tail-head;
             head = 0;
-            tail = tail - head;
             items = a;
         }
         else {
