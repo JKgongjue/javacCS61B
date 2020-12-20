@@ -130,6 +130,9 @@ public class ArrayDeque<T> {
         items[i] = null;
         size--;
         head = i;
+        if (isResize()) {
+            divideCapacity();
+        }
         return item;
     }
     /**
@@ -151,6 +154,9 @@ public class ArrayDeque<T> {
         items[i] = null;
         size--;
         tail = i;
+        if (isResize()) {
+            divideCapacity();
+        }
         return item;
     }
     public T get(int index) {
