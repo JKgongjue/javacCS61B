@@ -2,9 +2,9 @@ public class LinkedListDeque<T> {
     private IntNode sentinel;
     private int size = 0;
     private class IntNode {
-        public IntNode prev;
-        public T item;
-        public IntNode next;
+        private IntNode prev;
+        private T item;
+        private IntNode next;
         public  IntNode() {
             next = this;
             prev = next;
@@ -57,11 +57,11 @@ public class LinkedListDeque<T> {
     }
     public void printDeque() {
         IntNode head = sentinel;
-        while(head.next != sentinel){
+        while (head.next != sentinel) {
             System.out.print(head.next.item + " ");
             head = head.next;
         }
-        System.out.println("");
+        System.out.println(" ");
     }
     public T removeFirst() {
         if (!this.isEmpty()) {

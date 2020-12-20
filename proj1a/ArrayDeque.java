@@ -128,6 +128,7 @@ public class ArrayDeque<T> {
         }
         item = items[i];
         items[i] = null;
+        size--;
         head = i;
         return item;
     }
@@ -148,6 +149,7 @@ public class ArrayDeque<T> {
         }
         item = items[i];
         items[i] = null;
+        size--;
         tail = i;
         return item;
     }
