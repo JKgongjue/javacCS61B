@@ -8,7 +8,7 @@
 
 
 
-public class ArrayDeque<T> {
+public class ArrayDeque<T> implements Deque<T> {
     private int size;
     private float usageFactor=0;
     private T[] items;
@@ -70,6 +70,7 @@ public class ArrayDeque<T> {
         head = 4;
         tail = 5;
     }
+    @Override
     public void addFirst(T item) {
         items[head] = item;
         head--;
@@ -81,6 +82,7 @@ public class ArrayDeque<T> {
             doubleCapacity();
         }
     }
+    @Override
     public void addLast(T item) {
         items[tail] = item;
         tail++;
@@ -93,12 +95,15 @@ public class ArrayDeque<T> {
         }
 
     }
+    @Override
     public boolean isEmpty() {
         return size == 0;
     }
+    @Override
     public int size() {
         return size;
     }
+    @Override
     public void printDeque() {
         if (tail <= head){
             for (int i = head; i < items.length; i++) {
@@ -117,6 +122,7 @@ public class ArrayDeque<T> {
 
         }
     }
+    @Override
     public T removeFirst() {
         T item;
         if (size == 0) {
@@ -135,12 +141,7 @@ public class ArrayDeque<T> {
         }
         return item;
     }
-    /**
-     * 由于设置的时候tail为尾点，且数组未满时tail这个点指向的addlast将要加入的点。
-     *所有的逻辑都基于tail指向的点是空。
-     * 但是特殊情况下tail指向的点不一定为空
-     * 所以这里要判断tail指向的点是否为空。
-     * */
+    @Override
     public T removeLast() {
         T item;
         if (size == 0) {
@@ -159,6 +160,7 @@ public class ArrayDeque<T> {
         }
         return item;
     }
+    @Override
     public T get(int index) {
         int r = head + 1 + index;
         if (r > items.length - 1) {
