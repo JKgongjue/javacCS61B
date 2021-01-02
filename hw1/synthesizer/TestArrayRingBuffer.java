@@ -19,6 +19,13 @@ public class TestArrayRingBuffer {
             arb.enqueue(3);
             arb.enqueue(4);
             arb.enqueue(5);
+            arb.enqueue(5);
+            arb.enqueue(5);
+            arb.enqueue(5);
+            arb.enqueue(5);
+            arb.enqueue(5);
+            arb.enqueue(5);
+            arb.enqueue(5);
             Iterator<Integer> a = arb.iterator();
             while (a.hasNext()) {
                 System.out.println(a.next());
