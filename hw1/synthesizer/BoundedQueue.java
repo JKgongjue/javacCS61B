@@ -15,7 +15,6 @@ public interface BoundedQueue<T> extends Iterable<T> {
     default boolean isFull() {
         return capacity() == fillCount();
     }
-
     @Override
     Iterator<T> iterator();
 }
