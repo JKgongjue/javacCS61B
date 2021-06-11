@@ -1,5 +1,7 @@
 package lab9;
 
+import org.w3c.dom.Node;
+
 import java.util.Iterator;
 import java.util.Set;
 
@@ -39,6 +41,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      *  computing the hashcode, followed by modding by the number of buckets.
      *  To handle negative numbers properly, uses floorMod instead of %.
      */
+//    返回在哈希表中的索引值（用key的hashcode与底层数组取模）
     private int hash(K key) {
         if (key == null) {
             return 0;
@@ -48,24 +51,37 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         return Math.floorMod(key.hashCode(), numBuckets);
     }
 
+
+
     /* Returns the value to which the specified key is mapped, or null if this
      * map contains no mapping for the key.
      */
     @Override
     public V get(K key) {
-        throw new UnsupportedOperationException();
+        if (key == null) return null;
+        int hash = hash(key);
+        return buckets[hash].get(key);
+
     }
 
     /* Associates the specified value with the specified key in this map. */
     @Override
     public void put(K key, V value) {
-        throw new UnsupportedOperationException();
+//        throw new UnsupportedOperationException();
+        int hash = hash(key);
+        int initialSize = buckets[hash].size();
+        buckets[hash].put(key,value);
+        int lastSize = buckets[hash].size();
+        if ((lastSize - initialSize) == 1) {
+            size++;
+        }
     }
 
     /* Returns the number of key-value mappings in this map. */
     @Override
     public int size() {
-        throw new UnsupportedOperationException();
+//        throw new UnsupportedOperationException();
+        return size;
     }
 
     //////////////// EVERYTHING BELOW THIS LINE IS OPTIONAL ////////////////
